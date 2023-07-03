@@ -1,27 +1,71 @@
 // Assignment Code
 function generatePassword() {
 
-  //GIVEN I need a new, secure password
-  //WHEN I click the button to generate a password
-  //THEN I am presented with a series of prompts for password criteria
+  //Prompting for password criteria
+  //Get password length
+  var passLength = parseInt(prompt("Enter the length of the password between 8 and 128"));
+  
+  //Verifying password length is valid
+  if (passLength > 128 || passLength < 8 || passLength === NaN)
+  {
+    return "Invalid Password length";
+  }
 
-  //WHEN prompted for password criteria
-  //THEN I select which criteria to include in the password
+  //Get which charcters types should be used
+  var lowerCase = confirm("Use lower case letters?");
+  var upperCase = confirm("Use upper case letters?");
+  var numeric = confirm("Use numbers?");
+  var special = confirm("Use special charcters letters?");
 
-  //WHEN prompted for the length of the password
-  //THEN I choose a length of at least 8 characters and no more than 128 characters
+  //verifying at least one charcter type was selected
+  if (!(lowerCase ||upperCase || numeric || special))
+  {
+    return "You must select at least one type of charcter to use.";
+  }
 
-  //WHEN asked for character types to include in the password
-  //THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+  // Define character sets based on selected criteria
+  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numericChars = "0123456789";
+  var specialChars = "!@#$%^&*()_-+=[]{}<>,.?/:|";
+  var charList = "";
 
-  //WHEN I answer each prompt
-  //THEN my input should be validated and at least one character type should be selected
+  //Adding charcters based on the criteria from user
+  if (lowerCase)
+  {
+    charList = charList + lowercaseChars;
+  }
 
-  //WHEN all prompts are answered
-  //THEN a password is generated that matches the selected criteria
+  if (upperCase)
+  {
+    charList = charList + uppercaseChars;
+  }
+  
+  if (numeric)
+  {
+    charList = charList + numericChars;
+  }
+  
+  if (special)
+  {
+    charList = charList + specialChars;
+  }
 
-  //WHEN the password is generated
-  //THEN the password is either displayed in an alert or written to the page
+  //intializing variables
+  var password = "";
+  var random = 0;
+
+  //generating random password
+ while (passLength > password.length)
+ {
+  //generating random index
+  random = Math.floor(Math.random() * charList.length);
+  //using random index to select charcter from list
+  password = password + charList[random];
+ }
+
+//returning output
+return password;
 }
 
 //get references to the generate elements
