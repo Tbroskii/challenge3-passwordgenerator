@@ -3,7 +3,9 @@
 ## Description
 
 This website is used to create a random password between 8-128 charcters. The user chooses the number of charcters used in the password
-and they choose what type of characters are used in the password.
+and they choose what type of characters are used in the password. https://tbroskii.github.io/challenge3-passwordgenerator/
+
+![website landing page](image-1.png)
 
 ## Usage
 To get a password generated click the generate password button. When the generate password button is clicked you will get a series of prompts to determine what criteria will be used to generate the password. After the prompts are all answered the password will be generated in the Your Secure Password box.
